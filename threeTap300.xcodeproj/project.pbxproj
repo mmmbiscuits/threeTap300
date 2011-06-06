@@ -1,0 +1,286 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6801F452139D013100383590 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6801F451139D013100383590 /* UIKit.framework */; };
+		6801F454139D013100383590 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6801F453139D013100383590 /* Foundation.framework */; };
+		6801F456139D013100383590 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6801F455139D013100383590 /* CoreGraphics.framework */; };
+		6801F45C139D013100383590 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6801F45A139D013100383590 /* InfoPlist.strings */; };
+		6801F45F139D013100383590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6801F45E139D013100383590 /* main.m */; };
+		6801F462139D013100383590 /* threeTap300AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6801F461139D013100383590 /* threeTap300AppDelegate.m */; };
+		6801F465139D013100383590 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6801F463139D013100383590 /* MainWindow.xib */; };
+		6801F468139D013100383590 /* threeTap300ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6801F467139D013100383590 /* threeTap300ViewController.m */; };
+		6801F46B139D013100383590 /* threeTap300ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6801F469139D013100383590 /* threeTap300ViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6801F44D139D013100383590 /* threeTap300.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = threeTap300.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6801F451139D013100383590 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		6801F453139D013100383590 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6801F455139D013100383590 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		6801F459139D013100383590 /* threeTap300-Info.plist */ = {isa = PBXFileReference; path = "threeTap300-Info.plist"; sourceTree = "<group>"; };
+		6801F45B139D013100383590 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6801F45D139D013100383590 /* threeTap300-Prefix.pch */ = {isa = PBXFileReference; path = "threeTap300-Prefix.pch"; sourceTree = "<group>"; };
+		6801F45E139D013100383590 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6801F460139D013100383590 /* threeTap300AppDelegate.h */ = {isa = PBXFileReference; path = threeTap300AppDelegate.h; sourceTree = "<group>"; };
+		6801F461139D013100383590 /* threeTap300AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = threeTap300AppDelegate.m; sourceTree = "<group>"; };
+		6801F464139D013100383590 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		6801F466139D013100383590 /* threeTap300ViewController.h */ = {isa = PBXFileReference; path = threeTap300ViewController.h; sourceTree = "<group>"; };
+		6801F467139D013100383590 /* threeTap300ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = threeTap300ViewController.m; sourceTree = "<group>"; };
+		6801F46A139D013100383590 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/threeTap300ViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6801F44A139D013000383590 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6801F452139D013100383590 /* UIKit.framework in Frameworks */,
+				6801F454139D013100383590 /* Foundation.framework in Frameworks */,
+				6801F456139D013100383590 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6801F442139D013000383590 = {
+			isa = PBXGroup;
+			children = (
+				6801F457139D013100383590 /* threeTap300 */,
+				6801F450139D013100383590 /* Frameworks */,
+				6801F44E139D013100383590 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6801F44E139D013100383590 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6801F44D139D013100383590 /* threeTap300.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6801F450139D013100383590 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6801F451139D013100383590 /* UIKit.framework */,
+				6801F453139D013100383590 /* Foundation.framework */,
+				6801F455139D013100383590 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6801F457139D013100383590 /* threeTap300 */ = {
+			isa = PBXGroup;
+			children = (
+				6801F460139D013100383590 /* threeTap300AppDelegate.h */,
+				6801F461139D013100383590 /* threeTap300AppDelegate.m */,
+				6801F463139D013100383590 /* MainWindow.xib */,
+				6801F466139D013100383590 /* threeTap300ViewController.h */,
+				6801F467139D013100383590 /* threeTap300ViewController.m */,
+				6801F469139D013100383590 /* threeTap300ViewController.xib */,
+				6801F458139D013100383590 /* Supporting Files */,
+			);
+			path = threeTap300;
+			sourceTree = "<group>";
+		};
+		6801F458139D013100383590 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6801F459139D013100383590 /* threeTap300-Info.plist */,
+				6801F45A139D013100383590 /* InfoPlist.strings */,
+				6801F45D139D013100383590 /* threeTap300-Prefix.pch */,
+				6801F45E139D013100383590 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6801F44C139D013000383590 /* threeTap300 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6801F46E139D013100383590 /* Build configuration list for PBXNativeTarget "threeTap300" */;
+			buildPhases = (
+				6801F449139D013000383590 /* Sources */,
+				6801F44A139D013000383590 /* Frameworks */,
+				6801F44B139D013000383590 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = threeTap300;
+			productName = threeTap300;
+			productReference = 6801F44D139D013100383590 /* threeTap300.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6801F444139D013000383590 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = NA;
+			};
+			buildConfigurationList = 6801F447139D013000383590 /* Build configuration list for PBXProject "threeTap300" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6801F442139D013000383590;
+			productRefGroup = 6801F44E139D013100383590 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6801F44C139D013000383590 /* threeTap300 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6801F44B139D013000383590 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6801F45C139D013100383590 /* InfoPlist.strings in Resources */,
+				6801F465139D013100383590 /* MainWindow.xib in Resources */,
+				6801F46B139D013100383590 /* threeTap300ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6801F449139D013000383590 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6801F45F139D013100383590 /* main.m in Sources */,
+				6801F462139D013100383590 /* threeTap300AppDelegate.m in Sources */,
+				6801F468139D013100383590 /* threeTap300ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6801F45A139D013100383590 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6801F45B139D013100383590 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		6801F463139D013100383590 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6801F464139D013100383590 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		6801F469139D013100383590 /* threeTap300ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6801F46A139D013100383590 /* en */,
+			);
+			name = threeTap300ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6801F46C139D013100383590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6801F46D139D013100383590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		6801F46F139D013100383590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "threeTap300/threeTap300-Prefix.pch";
+				INFOPLIST_FILE = "threeTap300/threeTap300-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		6801F470139D013100383590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "threeTap300/threeTap300-Prefix.pch";
+				INFOPLIST_FILE = "threeTap300/threeTap300-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6801F447139D013000383590 /* Build configuration list for PBXProject "threeTap300" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6801F46C139D013100383590 /* Debug */,
+				6801F46D139D013100383590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6801F46E139D013100383590 /* Build configuration list for PBXNativeTarget "threeTap300" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6801F46F139D013100383590 /* Debug */,
+				6801F470139D013100383590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6801F444139D013000383590 /* Project object */;
+}
