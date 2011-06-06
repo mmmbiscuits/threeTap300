@@ -16,6 +16,7 @@
 		6801F465139D013100383590 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6801F463139D013100383590 /* MainWindow.xib */; };
 		6801F468139D013100383590 /* threeTap300ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6801F467139D013100383590 /* threeTap300ViewController.m */; };
 		6801F46B139D013100383590 /* threeTap300ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6801F469139D013100383590 /* threeTap300ViewController.xib */; };
+		6801F472139D01CC00383590 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6801F471139D01CC00383590 /* AddressBook.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,16 +24,17 @@
 		6801F451139D013100383590 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6801F453139D013100383590 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6801F455139D013100383590 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		6801F459139D013100383590 /* threeTap300-Info.plist */ = {isa = PBXFileReference; path = "threeTap300-Info.plist"; sourceTree = "<group>"; };
+		6801F459139D013100383590 /* threeTap300-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "threeTap300-Info.plist"; sourceTree = "<group>"; };
 		6801F45B139D013100383590 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6801F45D139D013100383590 /* threeTap300-Prefix.pch */ = {isa = PBXFileReference; path = "threeTap300-Prefix.pch"; sourceTree = "<group>"; };
+		6801F45D139D013100383590 /* threeTap300-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "threeTap300-Prefix.pch"; sourceTree = "<group>"; };
 		6801F45E139D013100383590 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6801F460139D013100383590 /* threeTap300AppDelegate.h */ = {isa = PBXFileReference; path = threeTap300AppDelegate.h; sourceTree = "<group>"; };
+		6801F460139D013100383590 /* threeTap300AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = threeTap300AppDelegate.h; sourceTree = "<group>"; };
 		6801F461139D013100383590 /* threeTap300AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = threeTap300AppDelegate.m; sourceTree = "<group>"; };
 		6801F464139D013100383590 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		6801F466139D013100383590 /* threeTap300ViewController.h */ = {isa = PBXFileReference; path = threeTap300ViewController.h; sourceTree = "<group>"; };
+		6801F466139D013100383590 /* threeTap300ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = threeTap300ViewController.h; sourceTree = "<group>"; };
 		6801F467139D013100383590 /* threeTap300ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = threeTap300ViewController.m; sourceTree = "<group>"; };
 		6801F46A139D013100383590 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/threeTap300ViewController.xib; sourceTree = "<group>"; };
+		6801F471139D01CC00383590 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6801F472139D01CC00383590 /* AddressBook.framework in Frameworks */,
 				6801F452139D013100383590 /* UIKit.framework in Frameworks */,
 				6801F454139D013100383590 /* Foundation.framework in Frameworks */,
 				6801F456139D013100383590 /* CoreGraphics.framework in Frameworks */,
@@ -69,6 +72,7 @@
 		6801F450139D013100383590 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6801F471139D01CC00383590 /* AddressBook.framework */,
 				6801F451139D013100383590 /* UIKit.framework */,
 				6801F453139D013100383590 /* Foundation.framework */,
 				6801F455139D013100383590 /* CoreGraphics.framework */,
