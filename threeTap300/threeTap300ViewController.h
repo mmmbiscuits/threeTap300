@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import <AddressBook/AddressBook.h>
-@interface threeTap300ViewController : UIViewController {
+#import <MessageUI/MessageUI.h>
+@interface threeTap300ViewController : UIViewController <MFMessageComposeViewControllerDelegate> {
     NSMutableArray* _addressBookNames;      // holds a list of all the address book names
     NSMutableArray* _addressBookPhones;     // holds a list of all the phone #s (there is a 1:1 between _addressBookPhones and Names)
     UITableView *_addressesTableView;
+    UILabel *_statusLabel;
 }
 
 @property(nonatomic, retain)NSMutableArray *_addressBook;
 @property (nonatomic, retain) IBOutlet UITableView *addressesTableView;
+@property (nonatomic, retain) IBOutlet UILabel *statusLabel;
 
 -(void)loadAddressBook;                     // should be called at the start to load the contact book into an array for faster search
 

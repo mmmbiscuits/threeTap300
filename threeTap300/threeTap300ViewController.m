@@ -11,20 +11,19 @@
 @implementation threeTap300ViewController
 @synthesize _addressBook;
 @synthesize addressesTableView = _addressesTableView;
+@synthesize statusLabel = _statusLabel;
 
 - (void)dealloc
 {
     [_addressBook release];
     [_addressesTableView release];
+    [_statusLabel release];
     [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -33,14 +32,15 @@
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
+   _statusLabel.text =  NSLocalizedString(@"select a number to check", @"feed out string to inform the user of the status");
     [self loadAddressBook];
     [super viewDidLoad];
 }
 
-
 - (void)viewDidUnload
 {
     [self setAddressesTableView:nil];
+    [self setStatusLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -82,38 +82,39 @@
     // example code for populating a subtileStyle
     [cell.detailTextLabel setText:[_addressBookPhones objectAtIndex:row]];
     
-    //    NSString *path = @"TableViewPlaceholder.png";
-    //    UIImage *theImage = [UIImage imageWithContentsOfFile:path];
-    //    cell.imageView.image = theImage;
-    
-    
-    //TODO: create a loop that finds the specific image for each entry. need to add a save field in the core data bit
-    UIImage *cellImage = [UIImage imageNamed:@"TableViewPlaceholder.png"];
-    cell.imageView.image = cellImage;
-    
     return cell;
-    
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+        
+    NSString * numberSelected = [_addressBookPhones objectAtIndex:indexPath.row]; // get the number
+    
+    NSLog(@"%@", numberSelected);
+    
+    MFMessageComposeViewController *controller = [[[MFMessageComposeViewController alloc] init] autorelease];// alloc the sms modal controller
+	if([MFMessageComposeViewController canSendText])
+	{
+
+        controller.body = numberSelected;  // here we define waht gets passed to the message 
+        
+        NSString *NetworkCheckingNumber = @"300";
+		controller.recipients = [NSArray arrayWithObjects:NetworkCheckingNumber, nil]; // set 300 as recipient
+		controller.messageComposeDelegate = self;
+		[self presentModalViewController:controller animated:YES];
+        [NetworkCheckingNumber release]; // dealloc
+	}	
+
 }
 
-#pragma mark - trying to load all the contacts __
+#pragma mark - load all the contacts __
 -(void)loadAddressBook
 {
     // remember this function will be called each time you refresh the address book 
     // by pressing the address book button, so make sure you release before alloc again
+    
     if ( _addressBookNames) { [_addressBookNames release]; }
     if ( _addressBookPhones) { [_addressBookPhones release]; }
     
@@ -136,7 +137,7 @@
             
             [_addressBookNames addObject:compositeName];
             [_addressBookPhones addObject:phone];
-            NSLog(@"%@",compositeName);
+          //  NSLog(@"%@",compositeName);
             [compositeName release];
             
         }
@@ -146,6 +147,29 @@
     [allPeople release];
     allPeople = nil;
     
+}
+
+#pragma mark - sms feedback stuff
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller 
+				 didFinishWithResult:(MessageComposeResult)result {
+	
+	// Notifies users about errors associated with the interface
+	switch (result)
+	{
+		case MessageComposeResultCancelled:
+			_statusLabel.text =  NSLocalizedString(@"you canceled, push send to check if same provider", @"messge compose was canceled");
+			break;
+		case MessageComposeResultSent:
+_statusLabel.text =  NSLocalizedString(@"Message sent a reply will return on that numbers status", @"message succesfully sent");			break;
+		case MessageComposeResultFailed:
+			_statusLabel.text =  NSLocalizedString(@"the message failed to send", @"there was an error in the sending of the message");
+			break;
+		default:
+			_statusLabel.text =  NSLocalizedString(@"mesage not sent", @"default message");
+			break;
+	}
+	[self dismissModalViewControllerAnimated:YES];
 }
 
 
