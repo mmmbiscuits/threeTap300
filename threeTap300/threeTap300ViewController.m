@@ -52,9 +52,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-
-
-
 #pragma mark - table view -
 #pragma mark - Table view data source
 
