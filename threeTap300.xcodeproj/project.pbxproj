@@ -18,6 +18,10 @@
 		6801F46B139D013100383590 /* threeTap300ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6801F469139D013100383590 /* threeTap300ViewController.xib */; };
 		6801F472139D01CC00383590 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6801F471139D01CC00383590 /* AddressBook.framework */; };
 		6801F47C139D09F200383590 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6801F47B139D09F200383590 /* MessageUI.framework */; };
+		6801F486139D2F9200383590 /* 3taplogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6801F485139D2F9200383590 /* 3taplogo.png */; };
+		6801F488139D3BC500383590 /* 3taplogo_que2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6801F487139D3BC500383590 /* 3taplogo_que2.png */; };
+		6801F48A139D3E7000383590 /* 3taplogo_que3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6801F489139D3E7000383590 /* 3taplogo_que3.png */; };
+		68DA6211139E0751000BE6A0 /* 3taplogo_quesmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 68DA6210139E0751000BE6A0 /* 3taplogo_quesmall.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,10 @@
 		6801F46A139D013100383590 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/threeTap300ViewController.xib; sourceTree = "<group>"; };
 		6801F471139D01CC00383590 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		6801F47B139D09F200383590 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		6801F485139D2F9200383590 /* 3taplogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3taplogo.png; sourceTree = "<group>"; };
+		6801F487139D3BC500383590 /* 3taplogo_que2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3taplogo_que2.png; sourceTree = "<group>"; };
+		6801F489139D3E7000383590 /* 3taplogo_que3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3taplogo_que3.png; sourceTree = "<group>"; };
+		68DA6210139E0751000BE6A0 /* 3taplogo_quesmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3taplogo_quesmall.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +66,10 @@
 		6801F442139D013000383590 = {
 			isa = PBXGroup;
 			children = (
+				68DA6210139E0751000BE6A0 /* 3taplogo_quesmall.png */,
+				6801F489139D3E7000383590 /* 3taplogo_que3.png */,
+				6801F487139D3BC500383590 /* 3taplogo_que2.png */,
+				6801F485139D2F9200383590 /* 3taplogo.png */,
 				6801F457139D013100383590 /* threeTap300 */,
 				6801F450139D013100383590 /* Frameworks */,
 				6801F44E139D013100383590 /* Products */,
@@ -135,6 +147,7 @@
 		6801F444139D013000383590 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0420;
 				ORGANIZATIONNAME = NA;
 			};
 			buildConfigurationList = 6801F447139D013000383590 /* Build configuration list for PBXProject "threeTap300" */;
@@ -162,6 +175,10 @@
 				6801F45C139D013100383590 /* InfoPlist.strings in Resources */,
 				6801F465139D013100383590 /* MainWindow.xib in Resources */,
 				6801F46B139D013100383590 /* threeTap300ViewController.xib in Resources */,
+				6801F486139D2F9200383590 /* 3taplogo.png in Resources */,
+				6801F488139D3BC500383590 /* 3taplogo_que2.png in Resources */,
+				6801F48A139D3E7000383590 /* 3taplogo_que3.png in Resources */,
+				68DA6211139E0751000BE6A0 /* 3taplogo_quesmall.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +235,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -232,6 +250,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -249,6 +268,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "threeTap300/threeTap300-Prefix.pch";
 				INFOPLIST_FILE = "threeTap300/threeTap300-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -262,6 +282,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "threeTap300/threeTap300-Prefix.pch";
 				INFOPLIST_FILE = "threeTap300/threeTap300-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -287,6 +308,7 @@
 				6801F470139D013100383590 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

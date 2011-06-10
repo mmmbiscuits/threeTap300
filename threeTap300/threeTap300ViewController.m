@@ -19,6 +19,9 @@
     [_addressesTableView release];
     [_statusLabel release];
     [super dealloc];
+    [abNamesArray release];
+    [abNumbersArray release];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,7 +37,13 @@
 {
    _statusLabel.text =  NSLocalizedString(@"select a number to check", @"feed out string to inform the user of the status");
     [self loadAddressBook];
+    NSInteger counter = [abNamesArray count];
+    if (counter == 0){
+     // add a warning no entries??
+        _statusLabel.text = NSLocalizedString(@"No entries in the address book were found", @"no entries in address book error");
+    }
     [super viewDidLoad];
+    
 }
 
 - (void)viewDidUnload
@@ -64,7 +73,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [_addressBookNames count];
+    return [abNamesArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,9 +87,9 @@
     }
     NSInteger row = [indexPath row];
     
-    [cell.textLabel setText:[_addressBookNames objectAtIndex:row]];
+    [cell.textLabel setText:[abNamesArray objectAtIndex:row]];
     // example code for populating a subtileStyle
-    [cell.detailTextLabel setText:[_addressBookPhones objectAtIndex:row]];
+    [cell.detailTextLabel setText:[abNumbersArray objectAtIndex:row]];
     
     return cell;
 }
@@ -90,9 +99,10 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
         
-    NSString * numberSelected = [_addressBookPhones objectAtIndex:indexPath.row]; // get the number
     
-    NSLog(@"%@", numberSelected);
+    NSString * numberSelected = [abNumbersArray objectAtIndex:indexPath.row]; // get the number
+    
+    //NSLog(@"%@", numberSelected);
     
     MFMessageComposeViewController *controller = [[[MFMessageComposeViewController alloc] init] autorelease];// alloc the sms modal controller
 	if([MFMessageComposeViewController canSendText])
@@ -100,8 +110,11 @@
 
         controller.body = numberSelected;  // here we define waht gets passed to the message 
         
-        NSString *NetworkCheckingNumber = @"300";
+        NSString *NetworkCheckingNumber = @"300"; // this is the free txt number in nz to check if a number is on your network
 		controller.recipients = [NSArray arrayWithObjects:NetworkCheckingNumber, nil]; // set 300 as recipient
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        
 		controller.messageComposeDelegate = self;
 		[self presentModalViewController:controller animated:YES];
         [NetworkCheckingNumber release]; // dealloc
@@ -110,42 +123,38 @@
 }
 
 #pragma mark - load all the contacts __
--(void)loadAddressBook
+-(void)loadAddressBook 
 {
-    // remember this function will be called each time you refresh the address book 
-    // by pressing the address book button, so make sure you release before alloc again
     
-    if ( _addressBookNames) { [_addressBookNames release]; }
-    if ( _addressBookPhones) { [_addressBookPhones release]; }
-    
-    // Loading Address Book
+// Loading  all the entries from the Address Book into an array
     ABAddressBookRef _addressBookRef = ABAddressBookCreate();
-    NSArray* allPeople = (NSArray *)ABAddressBookCopyArrayOfAllPeople(_addressBookRef);
-    _addressBookNames = [[NSMutableArray alloc] initWithCapacity:[allPeople count]]; // aray for name
-    _addressBookPhones = [[NSMutableArray alloc] initWithCapacity:[allPeople count]];// array for numbers
+    NSArray* AdressBookEntriesDump = (NSArray *)ABAddressBookCopyArrayOfAllPeople(_addressBookRef);
+    abNamesArray = [[NSMutableArray alloc] initWithCapacity:   [AdressBookEntriesDump count]];      // init array for names
+    abNumbersArray = [[NSMutableArray alloc] initWithCapacity: [AdressBookEntriesDump count]];    // init array for numbers
     
-    // now iterate though all the records and suck out phone numbers
-    for (id record in allPeople) {
+    // now iterate though all the records and get the numbers
+    for (id record in AdressBookEntriesDump) {
         CFTypeRef phoneProperty = ABRecordCopyValue((ABRecordRef)record, kABPersonPhoneProperty);
-        NSArray *phones = (NSArray *)ABMultiValueCopyArrayOfAllValues(phoneProperty);
+        NSArray *phoneNumbers = (NSArray *)ABMultiValueCopyArrayOfAllValues(phoneProperty);
         CFRelease(phoneProperty);
-        for (NSString *phone in phones) {
+        for (NSString *phone in phoneNumbers) {
             NSString* compositeName = (NSString *)ABRecordCopyCompositeName((ABRecordRef)record);
             
             //so, if a name has multiple phone numbers, we create duplicate records
-            // of the name and each phone #
+            // of the name and co-responding phone number 
             
-            [_addressBookNames addObject:compositeName];
-            [_addressBookPhones addObject:phone];
-          //  NSLog(@"%@",compositeName);
+            [abNamesArray addObject:compositeName];
+            [abNumbersArray addObject:phone];
+            
+            //  NSLog(@"%@",compositeName); // for debug
             [compositeName release];
             
         }
-        [phones release];
+        [phoneNumbers release];
     }
     CFRelease(_addressBookRef);
-    [allPeople release];
-    allPeople = nil;
+    [AdressBookEntriesDump release];
+    AdressBookEntriesDump = nil;
     
 }
 
@@ -154,14 +163,15 @@
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller 
 				 didFinishWithResult:(MessageComposeResult)result {
 	
-	// Notifies users about errors associated with the interface
+	// Notifies users about errors and general statuses associated with the app
 	switch (result)
 	{
 		case MessageComposeResultCancelled:
 			_statusLabel.text =  NSLocalizedString(@"you canceled, push send to check if same provider", @"messge compose was canceled");
 			break;
 		case MessageComposeResultSent:
-_statusLabel.text =  NSLocalizedString(@"Message sent a reply will return on that numbers status", @"message succesfully sent");			break;
+            _statusLabel.text =  NSLocalizedString(@"Message sent a reply will return on that numbers status", @"message succesfully sent");			
+            break;
 		case MessageComposeResultFailed:
 			_statusLabel.text =  NSLocalizedString(@"the message failed to send", @"there was an error in the sending of the message");
 			break;
