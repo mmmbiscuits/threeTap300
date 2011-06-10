@@ -21,6 +21,7 @@
 		6801F486139D2F9200383590 /* 3taplogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6801F485139D2F9200383590 /* 3taplogo.png */; };
 		6801F488139D3BC500383590 /* 3taplogo_que2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6801F487139D3BC500383590 /* 3taplogo_que2.png */; };
 		6801F48A139D3E7000383590 /* 3taplogo_que3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6801F489139D3E7000383590 /* 3taplogo_que3.png */; };
+		688B131113A26088007F4C5B /* readme.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 688B131013A26088007F4C5B /* readme.rtf */; };
 		68DA6211139E0751000BE6A0 /* 3taplogo_quesmall.png in Resources */ = {isa = PBXBuildFile; fileRef = 68DA6210139E0751000BE6A0 /* 3taplogo_quesmall.png */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		6801F485139D2F9200383590 /* 3taplogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3taplogo.png; sourceTree = "<group>"; };
 		6801F487139D3BC500383590 /* 3taplogo_que2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3taplogo_que2.png; sourceTree = "<group>"; };
 		6801F489139D3E7000383590 /* 3taplogo_que3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3taplogo_que3.png; sourceTree = "<group>"; };
+		688B131013A26088007F4C5B /* readme.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = readme.rtf; sourceTree = "<group>"; };
 		68DA6210139E0751000BE6A0 /* 3taplogo_quesmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3taplogo_quesmall.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,10 +68,8 @@
 		6801F442139D013000383590 = {
 			isa = PBXGroup;
 			children = (
-				68DA6210139E0751000BE6A0 /* 3taplogo_quesmall.png */,
-				6801F489139D3E7000383590 /* 3taplogo_que3.png */,
-				6801F487139D3BC500383590 /* 3taplogo_que2.png */,
-				6801F485139D2F9200383590 /* 3taplogo.png */,
+				688B131013A26088007F4C5B /* readme.rtf */,
+				688B130E13A2605E007F4C5B /* graphics */,
 				6801F457139D013100383590 /* threeTap300 */,
 				6801F450139D013100383590 /* Frameworks */,
 				6801F44E139D013100383590 /* Products */,
@@ -119,6 +119,17 @@
 				6801F45E139D013100383590 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		688B130E13A2605E007F4C5B /* graphics */ = {
+			isa = PBXGroup;
+			children = (
+				68DA6210139E0751000BE6A0 /* 3taplogo_quesmall.png */,
+				6801F489139D3E7000383590 /* 3taplogo_que3.png */,
+				6801F487139D3BC500383590 /* 3taplogo_que2.png */,
+				6801F485139D2F9200383590 /* 3taplogo.png */,
+			);
+			name = graphics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +190,7 @@
 				6801F488139D3BC500383590 /* 3taplogo_que2.png in Resources */,
 				6801F48A139D3E7000383590 /* 3taplogo_que3.png in Resources */,
 				68DA6211139E0751000BE6A0 /* 3taplogo_quesmall.png in Resources */,
+				688B131113A26088007F4C5B /* readme.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
