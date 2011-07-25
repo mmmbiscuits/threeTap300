@@ -18,10 +18,10 @@
     [_addressBook release];
     [_addressesTableView release];
     [_statusLabel release];
-    [super dealloc];
     [abNamesArray release];
     [abNumbersArray release];
-    
+    [super dealloc];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,6 +42,9 @@
      // add a warning no entries??
         _statusLabel.text = NSLocalizedString(@"No entries in the address book were found", @"no entries in address book error");
     }
+    
+   self.view.backgroundColor = [[UIColor scrollViewTexturedBackgroundColor] colorWithAlphaComponent:0.4];
+   // self.view.backgroundColor = [UIColor underPageBackgroundColor];
     [super viewDidLoad];
     
 }
@@ -128,7 +131,13 @@
     
 // Loading  all the entries from the Address Book into an array
     ABAddressBookRef _addressBookRef = ABAddressBookCreate();
-    NSArray* AdressBookEntriesDump = (NSArray *)ABAddressBookCopyArrayOfAllPeople(_addressBookRef);
+    //ABPersonSortOrdering ABPersonGetSortOrdering; 
+    //ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(<#ABAddressBookRef addressBook#>, <#ABRecordRef source#>, <#ABPersonSortOrdering sortOrdering#>)
+   // ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering( <#ABRecordRef source#>, <#ABPersonSortOrdering sortOrdering#>); /// heres wher am playing around
+   //  
+   NSArray* AdressBookEntriesDump = (NSArray *)ABAddressBookCopyArrayOfAllPeople(_addressBookRef);
+    //NSArray* AdressBookEntriesDump = (NSArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering( _addressBookRef,ABPersonComparePeopleByName); /// heres wher am playing around
+
     abNamesArray = [[NSMutableArray alloc] initWithCapacity:   [AdressBookEntriesDump count]];      // init array for names
     abNumbersArray = [[NSMutableArray alloc] initWithCapacity: [AdressBookEntriesDump count]];    // init array for numbers
     
@@ -153,8 +162,8 @@
         [phoneNumbers release];
     }
     CFRelease(_addressBookRef);
-    [AdressBookEntriesDump release];
     AdressBookEntriesDump = nil;
+    [AdressBookEntriesDump release];
     
 }
 
@@ -167,10 +176,11 @@
 	switch (result)
 	{
 		case MessageComposeResultCancelled:
-			_statusLabel.text =  NSLocalizedString(@"you canceled, push send to check if same provider", @"messge compose was canceled");
+			_statusLabel.text =  NSLocalizedString(@"You Canceled", @"messge compose was canceled");
+            
 			break;
 		case MessageComposeResultSent:
-            _statusLabel.text =  NSLocalizedString(@"Message sent a reply will return on that numbers status", @"message succesfully sent");			
+            _statusLabel.text =  NSLocalizedString(@"checking Message sent reply will be sms'd", @"message succesfully sent");			
             break;
 		case MessageComposeResultFailed:
 			_statusLabel.text =  NSLocalizedString(@"the message failed to send", @"there was an error in the sending of the message");
@@ -181,6 +191,9 @@
 	}
 	[self dismissModalViewControllerAnimated:YES];
 }
+// cycle through checking for alphabetical entries 
+    //if char at index 0 = a, b ,c ,d ,e,f,g....                //check perfomance hit..
+// if char at index 1 = a,b,c,d,e,f,g.....
 
 
 @end
