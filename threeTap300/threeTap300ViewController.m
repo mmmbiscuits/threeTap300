@@ -21,7 +21,6 @@
     [abNamesArray release];
     [abNumbersArray release];
     [super dealloc];
-
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,15 +101,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
         
-    
     NSString * numberSelected = [abNumbersArray objectAtIndex:indexPath.row]; // get the number
-    
-    //NSLog(@"%@", numberSelected);
     
     MFMessageComposeViewController *controller = [[[MFMessageComposeViewController alloc] init] autorelease];// alloc the sms modal controller
 	if([MFMessageComposeViewController canSendText])
 	{
-
         controller.body = numberSelected;  // here we define waht gets passed to the message 
         
         NSString *NetworkCheckingNumber = @"300"; // this is the free txt number in nz to check if a number is on your network
@@ -122,7 +117,6 @@
 		[self presentModalViewController:controller animated:YES];
         [NetworkCheckingNumber release]; // dealloc
 	}	
-
 }
 
 #pragma mark - load all the contacts __
@@ -131,16 +125,10 @@
     
 // Loading  all the entries from the Address Book into an array
     ABAddressBookRef _addressBookRef = ABAddressBookCreate();
-    ABAddressBookRef testAddressReference = ABAddressBookCreate();
     
-    ABRecordRef source = ABAddressBookCopyDefaultSource(testAddressReference);
-   NSArray* AdressBookEntriesDump = (NSArray*)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(testAddressReference, source, kABPersonSortByFirstName);
-/*    //ABPersonSortOrdering ABPersonGetSortOrdering; 
-    //ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(<#ABAddressBookRef addressBook#>, <#ABRecordRef source#>, <#ABPersonSortOrdering sortOrdering#>)
-   // ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering( <#ABRecordRef source#>, <#ABPersonSortOrdering sortOrdering#>); /// heres wher am playing around
-   //  
- //  NSArray* AdressBookEntriesDump = (NSArray *)ABAddressBookCopyArrayOfAllPeople(_addressBookRef);
-   // NSArray* AdressBookEntriesDump = (NSArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering( _addressBookRef,ABPersonComparePeopleByName); /// heres wher am playing around*/
+    ABRecordRef source = ABAddressBookCopyDefaultSource(_addressBookRef);
+   NSArray* AdressBookEntriesDump = (NSArray*)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(_addressBookRef, source, kABPersonSortByFirstName); // gets entries and sorts by first name
+    
     abNamesArray = [[NSMutableArray alloc] initWithCapacity:   [AdressBookEntriesDump count]];      // init array for names
     abNumbersArray = [[NSMutableArray alloc] initWithCapacity: [AdressBookEntriesDump count]];    // init array for numbers
 // now iterate though all the records and get the numbers
@@ -161,9 +149,9 @@
         [phoneNumbers release];
     }
     CFRelease(_addressBookRef);
+    
     AdressBookEntriesDump = nil;
     [AdressBookEntriesDump release];
-    
 }
 
 #pragma mark - sms feedback stuff
