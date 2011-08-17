@@ -43,7 +43,7 @@
         _statusLabel.text = NSLocalizedString(@"No entries in the address book were found", @"no entries in address book error");
     }
     
-   self.view.backgroundColor = [[UIColor scrollViewTexturedBackgroundColor] colorWithAlphaComponent:0.4];
+   self.view.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:1];
    // self.view.backgroundColor = [UIColor underPageBackgroundColor];
     [super viewDidLoad];
     
@@ -131,17 +131,19 @@
     
 // Loading  all the entries from the Address Book into an array
     ABAddressBookRef _addressBookRef = ABAddressBookCreate();
-    //ABPersonSortOrdering ABPersonGetSortOrdering; 
+    ABAddressBookRef testAddressReference = ABAddressBookCreate();
+    
+    ABRecordRef source = ABAddressBookCopyDefaultSource(testAddressReference);
+   NSArray* AdressBookEntriesDump = (NSArray*)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(testAddressReference, source, kABPersonSortByFirstName);
+/*    //ABPersonSortOrdering ABPersonGetSortOrdering; 
     //ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering(<#ABAddressBookRef addressBook#>, <#ABRecordRef source#>, <#ABPersonSortOrdering sortOrdering#>)
    // ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering( <#ABRecordRef source#>, <#ABPersonSortOrdering sortOrdering#>); /// heres wher am playing around
    //  
-   NSArray* AdressBookEntriesDump = (NSArray *)ABAddressBookCopyArrayOfAllPeople(_addressBookRef);
-    //NSArray* AdressBookEntriesDump = (NSArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering( _addressBookRef,ABPersonComparePeopleByName); /// heres wher am playing around
-
+ //  NSArray* AdressBookEntriesDump = (NSArray *)ABAddressBookCopyArrayOfAllPeople(_addressBookRef);
+   // NSArray* AdressBookEntriesDump = (NSArray *)ABAddressBookCopyArrayOfAllPeopleInSourceWithSortOrdering( _addressBookRef,ABPersonComparePeopleByName); /// heres wher am playing around*/
     abNamesArray = [[NSMutableArray alloc] initWithCapacity:   [AdressBookEntriesDump count]];      // init array for names
     abNumbersArray = [[NSMutableArray alloc] initWithCapacity: [AdressBookEntriesDump count]];    // init array for numbers
-    
-    // now iterate though all the records and get the numbers
+// now iterate though all the records and get the numbers
     for (id record in AdressBookEntriesDump) {
         CFTypeRef phoneProperty = ABRecordCopyValue((ABRecordRef)record, kABPersonPhoneProperty);
         NSArray *phoneNumbers = (NSArray *)ABMultiValueCopyArrayOfAllValues(phoneProperty);
@@ -151,13 +153,10 @@
             
             //so, if a name has multiple phone numbers, we create duplicate records
             // of the name and co-responding phone number 
-            
             [abNamesArray addObject:compositeName];
             [abNumbersArray addObject:phone];
-            
             //  NSLog(@"%@",compositeName); // for debug
             [compositeName release];
-            
         }
         [phoneNumbers release];
     }
@@ -171,19 +170,26 @@
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller 
 				 didFinishWithResult:(MessageComposeResult)result {
-	
 	// Notifies users about errors and general statuses associated with the app
 	switch (result)
 	{
 		case MessageComposeResultCancelled:
 			_statusLabel.text =  NSLocalizedString(@"You Canceled", @"messge compose was canceled");
+            self.view.backgroundColor = [UIColor orangeColor];
+            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setBackgroundBlack) userInfo:nil repeats:NO];
             
 			break;
 		case MessageComposeResultSent:
-            _statusLabel.text =  NSLocalizedString(@"checking Message sent reply will be sms'd", @"message succesfully sent");			
+            _statusLabel.text =  NSLocalizedString(@"checking Message sent reply will be sms'd", @"message succesfully sent");	
+            self.view.backgroundColor = [UIColor darkGrayColor];
+            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setBackgroundBlack) userInfo:nil repeats:NO];
+
             break;
 		case MessageComposeResultFailed:
 			_statusLabel.text =  NSLocalizedString(@"the message failed to send", @"there was an error in the sending of the message");
+            self.view.backgroundColor = [UIColor redColor];
+            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setBackgroundBlack) userInfo:nil repeats:NO];
+
 			break;
 		default:
 			_statusLabel.text =  NSLocalizedString(@"mesage not sent", @"default message");
@@ -191,9 +197,8 @@
 	}
 	[self dismissModalViewControllerAnimated:YES];
 }
-// cycle through checking for alphabetical entries 
-    //if char at index 0 = a, b ,c ,d ,e,f,g....                //check perfomance hit..
-// if char at index 1 = a,b,c,d,e,f,g.....
 
-
+-(void) setBackgroundBlack{
+    self.view.backgroundColor = [UIColor blackColor]; 
+}
 @end

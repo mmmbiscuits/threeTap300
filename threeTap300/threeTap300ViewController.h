@@ -14,12 +14,13 @@
     NSMutableArray* abNumbersArray;     // holds a list of all the phone #s (there is a 1:1 between _addressBookPhones and Names)
     UITableView *_addressesTableView;
     UILabel *_statusLabel;
+    double tempoarytestFloat;
 }
 
 @property(nonatomic, retain)NSMutableArray *_addressBook;
 @property (nonatomic, retain) IBOutlet UITableView *addressesTableView;
 @property (nonatomic, retain) IBOutlet UILabel *statusLabel;
 
--(void)loadAddressBook;                     // should be called at the start to load the contact book into an array for faster search
-
+-(void)loadAddressBook;  // should be called at the start to load the contact book into an array for faster search
+-(void) setBackgroundBlack;
 @end
