@@ -18,7 +18,7 @@
 		<string>3taplogo_quesmall.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>Ryan.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>nz.co.ryansmale.threeTap300</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -39,7 +39,6 @@
 	<string>MainWindow</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
-		<string>camera</string>
 		<string>sms</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>

@@ -27,7 +27,6 @@
 {
     [super didReceiveMemoryWarning];
 }
-
 #pragma mark - View lifecycle
 
 
@@ -42,8 +41,8 @@
         _statusLabel.text = NSLocalizedString(@"No entries in the address book were found", @"no entries in address book error");
     }
     
-   self.view.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:1];
-   // self.view.backgroundColor = [UIColor underPageBackgroundColor];
+  // self.view.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:1];
+    self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.95];
     [super viewDidLoad];
     
 }
@@ -149,6 +148,7 @@
         [phoneNumbers release];
     }
     CFRelease(_addressBookRef);
+    CFRelease(source);
     
     AdressBookEntriesDump = nil;
     [AdressBookEntriesDump release];
@@ -166,13 +166,27 @@
             self.view.backgroundColor = [UIColor orangeColor];
             [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setBackgroundBlack) userInfo:nil repeats:NO];
             
+            double cancelDelayInSeconds = 2.0; // time we want to delay in seconds
+            dispatch_time_t popTime2 = dispatch_time(DISPATCH_TIME_NOW, cancelDelayInSeconds * NSEC_PER_SEC); // sets the time
+            dispatch_after(popTime2, dispatch_get_global_queue(0, 0), ^(void){  //does it overkill for this but good learning
+                self.statusLabel.text = @"select then push send";
+            });  
+            
 			break;
+            
 		case MessageComposeResultSent:
             _statusLabel.text =  NSLocalizedString(@"checking Message sent reply will be sms'd", @"message succesfully sent");	
             self.view.backgroundColor = [UIColor darkGrayColor];
             [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setBackgroundBlack) userInfo:nil repeats:NO];
+            
+            double delayInSeconds = 3.0; // time we want to delay in seconds
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC); // sets the time
+            dispatch_after(popTime, dispatch_get_global_queue(0, 0), ^(void){  //does it overkill for this but good learning
+                self.statusLabel.text = @"pick another?";
+            });            
 
             break;
+            
 		case MessageComposeResultFailed:
 			_statusLabel.text =  NSLocalizedString(@"the message failed to send", @"there was an error in the sending of the message");
             self.view.backgroundColor = [UIColor redColor];
@@ -189,4 +203,6 @@
 -(void) setBackgroundBlack{
     self.view.backgroundColor = [UIColor blackColor]; 
 }
+
+
 @end
