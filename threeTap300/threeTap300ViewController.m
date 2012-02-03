@@ -106,7 +106,19 @@
     MFMessageComposeViewController *controller = [[[MFMessageComposeViewController alloc] init] autorelease];// alloc the sms modal controller
 	if([MFMessageComposeViewController canSendText])
 	{
-        controller.body = numberSelected;  // here we define waht gets passed to the message 
+        
+        NSString *newText;
+        unichar firstChar;
+        firstChar = [numberSelected characterAtIndex:0];
+        if (firstChar == '0') {
+            NSRange range = NSMakeRange(0,1);
+            newText = [numberSelected stringByReplacingCharactersInRange:range withString:@"+64"];
+        } else{
+            newText = numberSelected;
+        }
+        
+        
+        controller.body = newText;  // here we define waht gets passed to the message 
         
         NSString *NetworkCheckingNumber = @"300"; // this is the free txt number in nz to check if a number is on your network
 		controller.recipients = [NSArray arrayWithObjects:NetworkCheckingNumber, nil]; // set 300 as recipient
