@@ -23,7 +23,6 @@
     NSDate *showStarted;
     BOOL shouldAnimate;
     
-    NSString*colour;
 }
 
 @property (copy) NSString *titleText;
@@ -33,7 +32,6 @@
 @property (nonatomic, assign) UIImage *backgroundImage;
 @property (nonatomic, assign) SEL onTouch;
 @property (assign) BOOL shouldAnimate;
-@property (copy) NSString *colour;
 
 #pragma mark - View methods
 

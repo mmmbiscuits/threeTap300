@@ -42,7 +42,6 @@
 @synthesize accessoryImage;
 @synthesize onTouch;
 @synthesize shouldAnimate;
-@synthesize colour;
 
 //Using this prevents two alerts to ever appear on the screen at the same time
 //TODO: Queue alerts, if multiple
