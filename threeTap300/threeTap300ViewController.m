@@ -7,6 +7,7 @@
 //
 
 #import "threeTap300ViewController.h"
+#import "YRDropdownView.h"
 
 @implementation threeTap300ViewController
 @synthesize _addressBook;
@@ -109,10 +110,10 @@
         
         NSString *NetworkCheckingNumber = @"300"; // this is the free txt number in nz to check if a number is on your network
 		controller.recipients = [NSArray arrayWithObjects:NetworkCheckingNumber, nil]; // set 300 as recipient
-        
-        [tableView deselectRowAtIndexPath:indexPath animated:NO];
-        
 		controller.messageComposeDelegate = self;
+        
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+
 		[self presentModalViewController:controller animated:YES];
         [NetworkCheckingNumber release]; // dealloc
 	}	
@@ -162,7 +163,9 @@
 	switch (result)
 	{
 		case MessageComposeResultCancelled:
-			_statusLabel.text =  NSLocalizedString(@"You Canceled", @"messge compose was canceled");
+            
+            [YRDropdownView showDropdownInView:self.view title:@"entry cancelled" detail:@"you canceled"  image:nil animated:YES hideAfter:5 setBackground:@"yellow"];
+		/*	_statusLabel.text =  NSLocalizedString(@"You Canceled", @"messge compose was canceled");
             self.view.backgroundColor = [UIColor orangeColor];
             [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setBackgroundBlack) userInfo:nil repeats:NO];
             
@@ -171,28 +174,19 @@
             dispatch_after(popTime2, dispatch_get_global_queue(0, 0), ^(void){  //does it overkill for this but good learning
                 self.statusLabel.text = @"select then push send";
             });  
-            
+            */
 			break;
             
 		case MessageComposeResultSent:
-            _statusLabel.text =  NSLocalizedString(@"checking Message sent reply will be sms'd", @"message succesfully sent");	
-            self.view.backgroundColor = [UIColor darkGrayColor];
-            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setBackgroundBlack) userInfo:nil repeats:NO];
             
-            double delayInSeconds = 3.0; // time we want to delay in seconds
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC); // sets the time
-            dispatch_after(popTime, dispatch_get_global_queue(0, 0), ^(void){  //does it overkill for this but good learning
-                self.statusLabel.text = @"pick another?";
-            });            
+            [YRDropdownView showDropdownInView:self.view title:@"Sent" detail:@"the result will return as a free sms in your messages" image:nil animated:YES hideAfter:5 setBackground:@"green"];
 
             break;
             
 		case MessageComposeResultFailed:
-			_statusLabel.text =  NSLocalizedString(@"the message failed to send", @"there was an error in the sending of the message");
-            self.view.backgroundColor = [UIColor redColor];
-            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(setBackgroundBlack) userInfo:nil repeats:NO];
-
-			break;
+			[YRDropdownView showDropdownInView:self.view title:@"Sending failed" detail:@"your phone was unable to send a message, check reception or try again later" image:nil animated:YES hideAfter:5 setBackground:@"red"];	
+            
+            break;
 		default:
 			_statusLabel.text =  NSLocalizedString(@"mesage not sent", @"default message");
 			break;
